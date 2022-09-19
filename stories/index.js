@@ -62,7 +62,4 @@ storiesOf("Button", module)
     ))
     .add("Tuesday", () => (
       <DayList days={days} day={"Tuesday"} setDay={action("setDay")} />
-    ))
-    .add("Wednesday", () => (
-        <DayList days={days} day={"Wednesday"} setDay={action("setDay")} />
     ));
