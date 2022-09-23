@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 import { storiesOf } from "@storybook/react";
 import { action } from "@storybook/addon-actions";
 import "index.scss";
@@ -154,17 +154,22 @@ storiesOf("Button", module)
 
         //appointment stories
         storiesOf("Appointment", module)
-          .addParameters({
-            backgrounds: [{ name: "white", value: "#fff", default: true }]
-          })
-          .add("Appointment", () => <Appointment />)
-          .add("Appointment with Time", () => <Appointment time="12pm" />)
-          .add("Header", () => <Header time="12pm" />)
-          .add("Empty", () => <Empty onAdd={action("onAdd")} />)
-          .add("Show", () => <Show onEdit={action("onEdit")}  onDelete={action("onDelete")}/>)
-          .add("Confirm", () => <Confirm message="Delete the appointment?" onConfirm={action("onConfirm")} onCancel={action("onCancel")}/>)
-          .add("Status", () => <Status message="Deleting"/>)
-          .add("Error", () => <Error message="Could not delete appointment." onClose={action("onClose")}/>)
-          .add("Create", () => <Form interviewers={interviewers} onSave={action("onSave")} onCancel={(action("onCancel"))}/>)
-          .add("Edit", () => <Form interviewers={interviewers} onSave={action("onSave")} onCancel={(action("onCancel"))} name="xyz" interviewer="2"/>)
-  
+        .addParameters({
+          backgrounds: [{ name: "white", value: "#fff", default: true }]
+        })
+        .add("Appointment", () => <Appointment />)
+        .add("Appointment with Time", () => <Appointment time="12pm" />)
+        .add("Header", () => <Header time="12pm" />)
+        .add("Empty", () => <Empty onAdd={action("onAdd")} />)
+        .add("Show", () => <Show onEdit={action("onEdit")}  onDelete={action("onDelete")}/>)
+        .add("Confirm", () => <Confirm message="Delete the appointment?" onConfirm={action("onConfirm")} onCancel={action("onCancel")}/>)
+        .add("Status", () => <Status message="Deleting"/>)
+        .add("Error", () => <Error message="Could not delete appointment." onClose={action("onClose")}/>)
+        .add("Create", () => <Form interviewers={interviewers} onSave={action("onSave")} onCancel={(action("onCancel"))}/>)
+        .add("Edit", () => <Form interviewers={interviewers} onSave={action("onSave")} onCancel={(action("onCancel"))} name="xyz" interviewer={3}/>)
+        .add("Appointment Empty", () => (
+          <Fragment>
+            <Appointment id={1} time="12pm" />
+            <Appointment id="last" time="1pm" />
+          </Fragment>
+        ))
