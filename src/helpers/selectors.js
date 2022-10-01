@@ -10,7 +10,7 @@ export function getAppointmentsForDay(state, day) {
   
   for (const appointment of selectedDay.appointments) {
     const apptObj = state.appointments[appointment];
-    result.push(apptObj);
+    result.push(state.appointments);
   }
 
   return result;
