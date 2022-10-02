@@ -42,6 +42,7 @@
     "@testing-library/jest-dom": "^4.0.0",
     "@testing-library/react": "^8.0.7",
     "babel-loader": "^8.0.5",
+    "react-test-renderer": "^16.9.0",
     "sass": "^1.54.9"
   },
   "peerDependencies": {
