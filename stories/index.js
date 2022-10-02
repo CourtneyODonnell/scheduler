@@ -169,7 +169,7 @@ storiesOf("Button", module)
         .add("Edit", () => <Form interviewers={interviewers} onSave={action("onSave")} onCancel={(action("onCancel"))} name="xyz" interviewer={3}/>)
         .add("Appointment Empty", () => (
           <Fragment>
-            <Appointment id={1} time="4pm" />
+            <Appointment id={1} time="4pm" onAdd={action("onAdd")}/>
             <Appointment time="5pm" />
           </Fragment>
         ))
@@ -179,6 +179,8 @@ storiesOf("Button", module)
               id={1}
               time="4pm"
               interview={{ student: "Lydia Miller-Jones", interviewer }}
+              onEdit={action("onEdit")}
+              onDelete={action("onDelete")}
             />
             <Appointment time="5pm" />
           </Fragment>

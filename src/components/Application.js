@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "components/Application.scss";
@@ -15,10 +16,10 @@ export default function Application(props) {
   });
 
   //daily appointments variable
-  const dailyAppointments = [];
+  const dailyAppointments = getAppointmentsForDay(state, state.day);
 
-  const setDay = day => setState({ ...state, day });
-  
+  const setDay = day => setState(prev => ({ ...prev, day }));
+
   useEffect(() => {
 
     Promise.all([

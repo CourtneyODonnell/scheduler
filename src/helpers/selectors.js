@@ -1,17 +1,8 @@
 import React from  "react";
 
 export function getAppointmentsForDay(state, day) {
-  let selectedDay = state.days.filter(d => d.name === day)[0];
-  let result = [];
-
-  if (!selectedDay) {
-    return [];
-  }
+  const selectedDay = state.days.filter(dayState => dayState.name === day)[0];
+  if (!selectedDay) return [];
   
-  for (const appointment of selectedDay.appointments) {
-    const apptObj = state.appointments[appointment];
-    result.push(state.appointments);
-  }
-
-  return result;
+  return selectedDay.appointments.map(appointment => state.appointments[`${appointment}`]);
 };
