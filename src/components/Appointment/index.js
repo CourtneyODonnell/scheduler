@@ -32,7 +32,7 @@ export default function Appointment(props) {
       ></Show>}
       {mode === CREATE &&
         <Form
-          interviewers={[]}
+          interviewers={props.interviewers}
           onCancel={() => back()}
         />} 
     </article>
