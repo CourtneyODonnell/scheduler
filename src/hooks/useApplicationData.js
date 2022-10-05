@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
-export default function useApplicationData() {
+export default function useApplicationData(props) {
   const [state, setState] = useState({
     day: "Monday",
     days: [],
@@ -11,9 +11,33 @@ export default function useApplicationData() {
 
   const setDay = day => setState(prev => ({ ...prev, day }));
 
-  const bookInterview = (id, interview) => {
-    //console.log(id, interview);
+  useEffect(() => {
 
+    Promise.all([
+      axios.get('/api/days'),
+      axios.get('/api/appointments'),
+      axios.get('/api/interviewers')  
+    ]).then((all) => {
+      setState(prev => ({
+        ...prev,
+        days: all[0].data,
+        appointments: all[1].data,
+        interviewers: all[2].data
+      }));
+    });
+  }, []);
+
+  const getApptDay = (id) => {
+    for (const day of state.days) {
+      for (const appointment of day.appointments) {
+        if (appointment === id) {
+          return day;
+        }
+      }
+    }
+  };
+
+  const bookInterview = (id, interview) => {
     //check if appt is new or edit of existing before adding to count
     const newOrEditOfAppt = state.appointments[id].interview ? false : true;
 
@@ -36,15 +60,7 @@ export default function useApplicationData() {
         });
       });
   };
-  const getApptDay = (id) => {
-    for (const day of state.days) {
-      for (const appointment of day.appointments) {
-        if (appointment === id) {
-          return day;
-        }
-      }
-    }
-  };
+
 
   const cancelInterview = (id) => {
     return axios.delete(`/api/appointments/${id}`)
@@ -57,23 +73,6 @@ export default function useApplicationData() {
         });
       });
   };
-  useEffect(() => {
-
-    Promise.all([
-      axios.get('/api/days'),
-      axios.get('/api/appointments'),
-      axios.get('/api/interviewers')  
-    ]).then(all => {
-      // console.log(all[1].data);
-      setState(prev => ({
-        ...prev,
-        days: all[0].data,
-        appointments: all[1].data,
-        interviewers: all[2].data
-      }));
-    });
-  }, []);
-
 
   return { state, setDay, bookInterview, cancelInterview }
 };
