@@ -27,22 +27,26 @@ export default function Appointment(props) {
   const { mode, transition, back } = useVisualMode(props.interview ? SHOW : EMPTY);
 
   const save = (name, interviewer) => {
-    transition(SAVING);
+    
     const interview = {
       student: name,
       interviewer
     };
-    props.bookInterview(props.id, interview)
+    transition(SAVING);
+
+    props
+      .bookInterview(props.id, interview)
       .then(() => transition(SHOW))
       .catch(() => transition(ERROR_SAVE, true));
   };
-
-  const deleteAppointment = (id) => {
+  // changed from deleteAppointment to destroy to match compass
+  function destroy(event) {
     transition(DELETING, true);
-    props.cancelInterview(id)
-      .then(() => transition(EMPTY))
-      .catch(() => transition(ERROR_DELETE, true));
-  };
+    props
+     .cancelInterview(props.id)
+     .then(() => transition(EMPTY))
+     .catch(error => transition(ERROR_DELETE, true));
+   }
 
   const getInterviewer = (interviewers, interview) => {
     if (interviewers && interview) {
@@ -88,7 +92,7 @@ export default function Appointment(props) {
 
       {mode === CONFIRM &&
         <Confirm
-          onConfirm={() => deleteAppointment(props.id)}
+          onConfirm={() => destroy(props.id)}
           onCancel={back}
         />
       }
