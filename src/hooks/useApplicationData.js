@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import axios from 'axios';  
+import axios from "axios";
 
 export default function useApplicationData() {
   const [state, setState] = useState({
@@ -13,6 +13,10 @@ export default function useApplicationData() {
 
   const bookInterview = (id, interview) => {
     //console.log(id, interview);
+
+    //check if appt is new or edit of existing before adding to count
+    const newOrEditOfAppt = state.appointments[id].interview ? false : true;
+
     const appointment = {
       ...state.appointments[id],
       interview: { ...interview }
@@ -22,13 +26,36 @@ export default function useApplicationData() {
       [id]: appointment
     };
     setState(prev => ({ ...prev, appointments }));
-     return axios.put(`/api/appointments/${id}`, { interview: {... interview } });
+    return axios.put(`/api/appointments/${id}`, { interview: { ...interview } })
+      .then(() => {
+        setState(prev => {
+          getApptDay(id).spots -= (newOrEditOfAppt) ? 1 : 0;
+          return {
+            ...prev,
+          };
+        });
+      });
   };
-
+  const getApptDay = (id) => {
+    for (const day of state.days) {
+      for (const appointment of day.appointments) {
+        if (appointment === id) {
+          return day;
+        }
+      }
+    }
+  };
   const cancelInterview = (id) => {
-    return axios.delete(`/api/appointments/${id}`);
+    return axios.delete(`/api/appointments/${id}`)
+      .then(() => {
+        setState(prev => {
+          getApptDay(id).spots += 1;
+          return {
+            ...prev,
+          };
+        });
+      });
   };
-
   useEffect(() => {
 
     Promise.all([
