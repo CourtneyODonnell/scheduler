@@ -7,10 +7,7 @@ import Form from "./Form";
 import Status from "./Status";
 import Confirm from "./Confirm";
 import Error from "./Error";
-
 import useVisualMode from "hooks/useVisualMode";
-
-
 const EMPTY = "EMPTY";
 const SHOW = "SHOW";
 const CREATE = "CREATE";
@@ -20,14 +17,11 @@ const DELETING = "DELETING";
 const EDIT = "EDIT";
 const ERROR_SAVE = "ERROR_SAVE";
 const ERROR_DELETE = "ERROR_DELETE";
-
-
 export default function Appointment(props) {
-
   const { mode, transition, back } = useVisualMode(props.interview ? SHOW : EMPTY);
 
   const save = (name, interviewer) => {
-    
+
     const interview = {
       student: name,
       interviewer
@@ -78,7 +72,6 @@ export default function Appointment(props) {
           onSave={save}
         />
       }
-
       {mode === SAVING &&
         <Status
           message="Saving"
@@ -96,7 +89,6 @@ export default function Appointment(props) {
           onCancel={back}
         />
       }
-
       {mode === EDIT &&
         <Form
           student={props.interview.student}
