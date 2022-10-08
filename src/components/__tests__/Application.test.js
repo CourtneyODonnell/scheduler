@@ -1,6 +1,8 @@
 import React from "react";
 import Application from "components/Application";
 import { render, cleanup, waitForElement, fireEvent, getByText, prettyDOM, getAllByTestId, getByAltText, getByPlaceholderText, queryByText, queryByAltText } from "@testing-library/react";
+/* somewhere near the top */
+import axios from "axios";
 
 afterEach(cleanup);
 
@@ -79,6 +81,48 @@ describe("Application", () => {
   
     expect(getByText(day, "2 spots remaining")).toBeInTheDocument();
   });
+
+  it("loads data, edits an interview and keeps the spots remaining for Monday the same", async() => {
+    //render application
+    const { container } = render(<Application />);
+    
+    //Wait for "Archie Cohen" to be displayed.
+    await waitForElement(() => getByText(container, "Archie Cohen"));
+    const appointment = getAllByTestId(container, "appointment").find(
+      appointment => queryByText(appointment, "Archie Cohen")
+    );
+    
+    //click edit to edit appointment
+    fireEvent.click(queryByAltText(appointment, "Edit"));
+    
+    //type student name as Lydia miller-jones
+    fireEvent.change(getByPlaceholderText(appointment, /enter student name/i), {
+      target: { value: "Lydia Miller-Jones" }
+    });
+    
+    //click sylvia palmer as interviewer
+    fireEvent.click(getByAltText(appointment, "Sylvia Palmer"));
+    
+    //click save button and display "saving"
+    fireEvent.click(getByText(appointment, "Save"));
+    expect(getByText(appointment, "Saving")).toBeInTheDocument();
+    
+    //wait for updated appt element with "sylvia palmer" to display
+    await waitForElement(() => getByText(container, "Sylvia Palmer"))
+    expect(getByText(container, "Sylvia Palmer")).toBeInTheDocument();
+    
+    //check daylistitem with monday also has the text "1 spot remaining"
+    const day = getAllByTestId(container, "day").find(day => 
+      queryByText(day, "Monday")
+    );
+    expect(getByText(day, "1 spot remaining")).toBeInTheDocument();
+    });
+  
+    /* test number five */
+    it("shows the save error when failing to save an appointment", () => {
+      axios.put.mockRejectedValueOnce();
+    });
+
 
 });
 
