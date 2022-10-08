@@ -42,14 +42,7 @@ export default function Appointment(props) {
      .catch(error => transition(ERROR_DELETE, true));
    }
 
-  const getInterviewer = (interviewers, interview) => {
-    if (interviewers && interview) {
-      const interviewer = interviewers.filter(interviewer => {
-        return interviewer.id === interview.interviewer;
-      });
-      return interviewer.length === 0 ? null : interviewer[0].name;
-    }
-  };
+
   
   return (
     <article className="appointment">
@@ -61,7 +54,7 @@ export default function Appointment(props) {
       {mode === SHOW &&
       <Show
         student={props.interview.student}
-        interviewer={getInterviewer(props.interviewers, props.interview)}
+        interviewer={props.interview.interviewer}
         onEdit={() => transition(EDIT)}
         onDelete={() => transition(CONFIRM)}
       />}

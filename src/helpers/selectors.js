@@ -4,8 +4,10 @@ export function getAppointmentsForDay(state, day) {
   
   return selectedDay.appointments.map(appointment => state.appointments[`${appointment}`]);
 };
-
 export function getInterview(state, interview) {
+  if(interview) {
+    console.log(interview.interviewer);
+  }
   return interview
     ? {
       student: interview.student,
@@ -17,7 +19,6 @@ export function getInterview(state, interview) {
     }
     : null;
 };
-
 export const getInterviewersForDay = (state, day) => {
   const selectedDay = state.days.filter(dayState => dayState.name === day)[0];
   if (!selectedDay) return [];
