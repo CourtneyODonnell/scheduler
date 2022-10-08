@@ -5,9 +5,7 @@ export function getAppointmentsForDay(state, day) {
   return selectedDay.appointments.map(appointment => state.appointments[`${appointment}`]);
 };
 export function getInterview(state, interview) {
-  if(interview) {
-    console.log(interview.interviewer);
-  }
+
   return interview
     ? {
       student: interview.student,
