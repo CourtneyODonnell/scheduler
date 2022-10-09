@@ -1,5 +1,6 @@
 import React from 'react';
 import "./styles.scss";
+
 import Header from './Header';
 import Show from './Show';
 import Empty from './Empty';
@@ -7,17 +8,20 @@ import Form from "./Form";
 import Status from "./Status";
 import Confirm from "./Confirm";
 import Error from "./Error";
+
 import useVisualMode from "hooks/useVisualMode";
-const EMPTY = "EMPTY";
-const SHOW = "SHOW";
-const CREATE = "CREATE";
-const SAVING = "SAVING";
-const CONFIRM = "CONFIRM";
-const DELETING = "DELETING";
-const EDIT = "EDIT";
-const ERROR_SAVE = "ERROR_SAVE";
-const ERROR_DELETE = "ERROR_DELETE";
+
 export default function Appointment(props) {
+  const EMPTY = "EMPTY";
+  const SHOW = "SHOW";
+  const CREATE = "CREATE";
+  const SAVING = "SAVING";
+  const CONFIRM = "CONFIRM";
+  const DELETING = "DELETING";
+  const EDIT = "EDIT";
+  const ERROR_SAVE = "ERROR_SAVE";
+  const ERROR_DELETE = "ERROR_DELETE";
+
   const { mode, transition, back } = useVisualMode(props.interview ? SHOW : EMPTY);
 
   const save = (name, interviewer) => {
@@ -33,7 +37,7 @@ export default function Appointment(props) {
       .then(() => transition(SHOW))
       .catch(() => transition(ERROR_SAVE, true));
   };
-  // changed from deleteAppointment to destroy to match compass
+
   function destroy(event) {
     transition(DELETING, true);
     props
@@ -41,9 +45,6 @@ export default function Appointment(props) {
      .then(() => transition(EMPTY))
      .catch(error => transition(ERROR_DELETE, true));
    }
-
-
-  
   return (
     <article className="appointment" data-testid="appointment">
       <Header time={props.time} />
@@ -69,13 +70,11 @@ export default function Appointment(props) {
         <Status
           message="Saving"
         />}
-      
       {mode === DELETING &&
         <Status
           message="Deleting..."
         />
       }
-
       {mode === CONFIRM &&
         <Confirm
           onConfirm={() => destroy(props.id)}
