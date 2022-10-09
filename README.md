@@ -1,8 +1,8 @@
 # Scheduler :calendar:
 
-Scheduler is a React :atom:	application that can be used to schedule students' interviews with various interviewers.
+:atom: Scheduler is a React	application that can be used to schedule students' interviews with various interviewers.
 
-This application is tested with Jest and Cypress. :white_check_mark:
+:white_check_mark: This application is tested with Jest and Cypress.
 
 ![Main Page With Day Hover](https://github.com/CourtneyODonnell/scheduler/blob/master/docs/MainPageWithDayHover.png?raw=true)
 
@@ -50,8 +50,4 @@ npm run storybook
 - testing-library/react-hooks
 - react-hooks-testing-library
 - axios
-- classnames: "^2.2.6",
-- normalize.css: "^8.0.1",
-- react: "^16.9.0",
-- react-dom: "^16.9.0"
-- react-scripts: "3.4.4"
+- react
