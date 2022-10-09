@@ -10,7 +10,7 @@ afterEach(cleanup);
 
 describe("Appointment", () => {
 /* A test that renders a React Component */
-xit("renders without crashing", () => {
+it("renders without crashing", () => {
   render(<Application />);
 });
 

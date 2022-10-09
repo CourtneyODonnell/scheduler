@@ -6,7 +6,7 @@ import DayListItem from "components/DayListItem";
 
 afterEach(cleanup);
 
-xit("renders without crashing", () => {
+it("renders without crashing", () => {
   render(<DayListItem />);
 });
 
