@@ -16,9 +16,9 @@ This application is tested with Jest and Cypress. :white_check_mark:
 
 ## Setup
 
-*Install dependencies with `npm install`.
+- Install dependencies with `npm install`.
 
-*Start the web server using the `npm start` command. The app will be served at http://localhost:8000/.
+- Start the web server using the `npm start` command. The app will be served at http://localhost:8000/.
 
 ## Running Webpack Development Server
 
@@ -39,23 +39,19 @@ npm run storybook
 ```
 ## Dependencies
 
-*babel/core: "^7.4.3",
-*storybook/addon-actions: "^5.0.10",
-*storybook/addon-backgrounds: "^5.0.10",
-*storybook/addon-links: "^5.0.10",
-*storybook/addons: "^5.0.10",
-*storybook/react: "^5.0.10",
-*testing-library/jest-dom: "^4.0.0",
-*testing-library/react: "^8.0.7",
-*babel-loader: "^8.0.5",
-*prop-types: "^15.8.1",
-*react-test-renderer: "^16.9.0",
-*sass: "^1.54.9"
-*testing-library/react-hooks": "^8.0.1",
-*axios: "^0.21.1",
-*classnames: "^2.2.6",
-*normalize.css: "^8.0.1",
-*react: "^16.9.0",
-*react-dom: "^16.9.0"
-*react-hooks-testing-library: "^0.6.0"
-*react-scripts: "3.4.4"
+- babel/core
+- storybook/react
+- testing-library/jest-dom
+- testing-library/react
+- babel-loader
+- prop-types
+- react-test-renderer
+- sass
+- testing-library/react-hooks
+- react-hooks-testing-library
+- axios
+- classnames: "^2.2.6",
+- normalize.css: "^8.0.1",
+- react: "^16.9.0",
+- react-dom: "^16.9.0"
+- react-scripts: "3.4.4"
