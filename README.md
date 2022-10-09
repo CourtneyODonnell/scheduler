@@ -4,13 +4,13 @@ Scheduler is a React application that can be used to schedule students' intervie
 
 This application is tested with Jest and Cypress.
 
-![Main Page With Day Hover]()
+![Main Page With Day Hover](https://github.com/CourtneyODonnell/scheduler/blob/master/docs/MainPageWithDayHover.png?raw=true)
 
-![Please Select An Interviewer Save Hover]()
+![Please Select An Interviewer Save Hover](https://github.com/CourtneyODonnell/scheduler/blob/master/docs/PleaseSelectAnInterviewerSaveHover.png?raw=true)
 
-![Saved Interview]()
+![Saved Interview](https://github.com/CourtneyODonnell/scheduler/blob/master/docs/SavedInterview.png?raw=true)
 
-![Confirm Deletion Prompt]()
+![Confirm Deletion Prompt](https://github.com/CourtneyODonnell/scheduler/blob/master/docs/ConfirmDeletionPrompt.png?raw=true)
 
 
 
