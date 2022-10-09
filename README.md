@@ -1,4 +1,18 @@
-# Interview Scheduler
+# Scheduler
+
+Scheduler is a React application that can be used to schedule students' interviews with various interviewers.
+
+This application is tested with Jest and Cypress.
+
+![Main Page With Day Hover]()
+
+![Please Select An Interviewer Save Hover]()
+
+![Saved Interview]()
+
+![Confirm Deletion Prompt]()
+
+
 
 ## Setup
 
