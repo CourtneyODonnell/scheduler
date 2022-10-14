@@ -45,7 +45,7 @@ export default function Appointment(props) {
      .then(() => transition(EMPTY))
      .catch(error => transition(ERROR_DELETE, true));
    }
-  return (
+   return (
     <article className="appointment" data-testid="appointment">
       <Header time={props.time} />
       {mode === EMPTY &&
