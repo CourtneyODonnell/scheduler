@@ -4,13 +4,15 @@
 
 :white_check_mark: This application is tested with Jest and Cypress.
 
+![GIF Scheduler Demo](https://github.com/CourtneyODonnell/scheduler/blob/master/docs/scheduler2.0DEMO.gif?raw=true)
+<!-- 
 ![Main Page With Day Hover](https://github.com/CourtneyODonnell/scheduler/blob/master/docs/MainPageWithDayHover.png?raw=true)
 
 ![Please Select An Interviewer Save Hover](https://github.com/CourtneyODonnell/scheduler/blob/master/docs/PleaseSelectAnInterviewerSaveHover.png?raw=true)
 
 ![Saved Interview](https://github.com/CourtneyODonnell/scheduler/blob/master/docs/SavedInterview.png?raw=true)
 
-![Confirm Deletion Prompt](https://github.com/CourtneyODonnell/scheduler/blob/master/docs/ConfirmDeletionPrompt.png?raw=true)
+![Confirm Deletion Prompt](https://github.com/CourtneyODonnell/scheduler/blob/master/docs/ConfirmDeletionPrompt.png?raw=true) -->
 
 
 
